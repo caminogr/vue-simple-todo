@@ -8,13 +8,14 @@
       @keyup.enter="submit(inputText)"
     />
     <div v-for="todo in todos" :key="todo.id">
-      <p>message: {{ todo.title }}</p>
-      <p @click="deleteTodo(todo.id)">削除</p>
+      <Card :todo="todo" :deleteTodo="deleteTodo" />
     </div>
   </div>
 </template>
 
 <script>
+import Card from "./components/Card";
+
 export default {
   name: "app",
   data: function() {
@@ -22,8 +23,10 @@ export default {
       latestId: 0,
       todos: [],
       inputText: ""
+      //      isEdit: false
     };
   },
+  components: { Card },
   methods: {
     submit: function(text) {
       const id = this.latestId + 1;
@@ -36,8 +39,7 @@ export default {
         this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1);
       }
     }
-  },
-  components: {}
+  }
 };
 </script>
 

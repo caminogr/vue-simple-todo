@@ -19,15 +19,17 @@ export default {
   name: "app",
   data: function() {
     return {
+      latestId: 0,
       todos: [],
       inputText: ""
     };
   },
   methods: {
     submit: function(text) {
-      const id = this.todos.length + 1;
+      const id = this.latestId + 1;
       this.todos.push({ id, title: text });
       this.inputText = "";
+      this.latestId += 1;
     },
     deleteTodo: function(id) {
       if (window.confirm("本当に削除しますか")) {

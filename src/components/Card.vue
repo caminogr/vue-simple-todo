@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card-root">
     <p :hidden="isEdit">{{ todo.title }}</p>
     <input v-model="todo.title" :hidden="!isEdit" @keyup.enter="edit" />
     <p @click="isEdit = true">編集</p>
@@ -24,4 +24,10 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style scoped>
+.card-root {
+  width: 80%;
+  margin: 30px auto;
+  background-color: #2114150d;
+}
+</style>

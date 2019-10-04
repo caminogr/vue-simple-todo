@@ -8,7 +8,7 @@
       @keyup.enter="submit(inputText)"
     />
     <div v-for="todo in todos" :key="todo.id">
-      <Card :todo="todo" :deleteTodo="deleteTodo" />
+      <Card :todo="todo" :editTodo="editTodo" :deleteTodo="deleteTodo" />
     </div>
   </div>
 </template>
@@ -23,7 +23,6 @@ export default {
       latestId: 0,
       todos: [],
       inputText: ""
-      //      isEdit: false
     };
   },
   components: { Card },
@@ -33,6 +32,10 @@ export default {
       this.todos.push({ id, title: text });
       this.inputText = "";
       this.latestId += 1;
+    },
+    editTodo: function(id, text) {
+      const todo = this.todos.find(todo => todo.id === id);
+      todo.title = text;
     },
     deleteTodo: function(id) {
       if (window.confirm("本当に削除しますか")) {

@@ -9,6 +9,7 @@
     />
     <div v-for="todo in todos" :key="todo.id">
       <p>message: {{ todo.title }}</p>
+      <p @click="deleteTodo(todo.id)">削除</p>
     </div>
   </div>
 </template>
@@ -27,6 +28,11 @@ export default {
       const id = this.todos.length + 1;
       this.todos.push({ id, title: text });
       this.inputText = "";
+    },
+    deleteTodo: function(id) {
+      if (window.confirm("本当に削除しますか")) {
+        this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1);
+      }
     }
   },
   components: {}

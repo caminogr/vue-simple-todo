@@ -8,7 +8,7 @@
 
 <script lang="ts">
 export default {
-  props: ["todo", "delteTodo"],
+  props: ["todo", "deleteTodo"],
   data: function() {
     return {
       isEdit: false
